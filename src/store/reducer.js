@@ -1,3 +1,5 @@
+import * as actionTypes  from './actions';
+
 const initialState = {
     counter: 0,
     results: []
@@ -10,33 +12,33 @@ const initialState = {
 */
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'INCREMENT' :
+        case actionTypes.INCREMENT :
             return {
                 ...state,
                 counter : state.counter + 1
             }
-        case 'DECREMENT' :
+        case actionTypes.DECREMENT :
             // Below return statement: it distribute the state object and overwrite the counter value as it was already ther in state object
             return {                
                 ...state,
                 counter: state.counter - 1
             }
-        case 'ADD' :
+        case actionTypes.ADD :
             return {
                 ...state,
                 counter: state.counter + action.val
             }
-        case 'SUBTRACT' :
+        case actionTypes.SUBTRACT :
             return {
                 ...state,
                 counter: state.counter - action.val
             }
-        case 'STORE_RESULT' :
+        case actionTypes.STORE_RESULT :
             return {
                 ...state,
                 results: state.results.concat(state.counter)  //Use concat to update results as this just create snapshot of & doesn't (push)change to the actual state
             }  //  results: state.results.concat({id: new Date(), value: state.counter}) doesn't work 
-        case 'DELETE_RESULT' :
+        case actionTypes.DELETE_RESULT :
             // const id = 2;
             // const newArray = [...state.results];
             // newArray.splice(id, 1)
